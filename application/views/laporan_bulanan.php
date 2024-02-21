@@ -33,23 +33,65 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
-      <form action="<?= site_url('laporan_bulanan')?>" method="POST">
-      <div class="row">
-        <div class="col">
-          <label for="">Dari</label>
-          <input type="date" class="form-control" placeholder="">
-        </div>
-        <div class="col">
-          <label for="">Sampai</label>
-          <input type="date" class="form-control" placeholder="">
-        </div>
-        <div class="col">
-          <button type="submit" class="btn btn-primary" style="margin-top: 30px">Kirim</button>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <form action="<?= site_url('laporan_bulanan')?>" method="POST">
+            <div class="row">
+              <div class="col">
+                <label for="">Dari</label>
+                <input type="date" name="dari" class="form-control" placeholder="">
+              </div>
+              <div class="col">
+                <label for="">Sampai</label>
+                <input type="date" name="sampai" class="form-control" placeholder="">
+              </div>
+              <div class="col">
+                <button type="submit" class="btn btn-primary" style="margin-top: 30px">Kirim</button>
+              </div>
+            </div>
+            </form>
+
+              <table class="table w-100 table-bordered table-hover mt-5">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Tanggal</th>
+                  <th>Nama Produk</th> 
+                  <th>Total Bayar</th> 
+                  <th>Jumlah Uang</th> 
+                  <th>Diskon</th> 
+                  <th>Pelanggan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                if ($data == 'Kosong') {
+                  echo "Kosong";
+                } else {
+                  foreach ($data as $key => $value):
+                    $id = $value['barcode'];
+                  ?>
+                    <tr>
+                      <td><?= $key+1 ?></td>
+                      <td><?= $value['tanggal'] ?></td>
+                      <td><?= $this->db->get_where('produk', array('id' => $id))->row('nama_produk'); ?></td>
+                      <td><?= $value['total_bayar'] ?></td>
+                      <td><?= $value['jumlah_uang'] ?></td>
+                      <td><?= $value['diskon'] ?></td>
+                      <td><?= $value['pelanggan'] ?></td>
+                    </tr>
+                    <?php endforeach;
+                }
+                
+                ?>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      </form>
-    </div>
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

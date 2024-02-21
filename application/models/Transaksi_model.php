@@ -32,6 +32,15 @@ class Transaksi_model extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function read_per_moon($dari,$sampai){
+		$this->db->select('transaksi.id, transaksi.tanggal, transaksi.barcode, transaksi.qty, transaksi.total_bayar, transaksi.jumlah_uang, transaksi.diskon, pelanggan.nama as pelanggan');
+		$this->db->where('tanggal>=', $dari." 00:00:00");
+		$this->db->where('tanggal<=', $sampai." 00:00:00");
+		$this->db->from($this->table);
+		$this->db->join('pelanggan', 'transaksi.pelanggan = pelanggan.id', 'left outer');
+		return $this->db->get();
+	}
+
 	public function delete($id)
 	{
 		$this->db->where('id', $id);
