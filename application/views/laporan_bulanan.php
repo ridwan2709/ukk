@@ -41,11 +41,11 @@
             <div class="row">
               <div class="col">
                 <label for="">Dari</label>
-                <input type="date" name="dari" class="form-control" placeholder="">
+                <input type="date" name="dari" class="form-control" placeholder="" value="<?= @$tanggal['dari'] ?>">
               </div>
               <div class="col">
                 <label for="">Sampai</label>
-                <input type="date" name="sampai" class="form-control" placeholder="">
+                <input type="date" name="sampai" class="form-control" placeholder="" value="<?= @$tanggal['sampai'] ?>">
               </div>
               <div class="col">
                 <button type="submit" class="btn btn-primary" style="margin-top: 30px">Kirim</button>
@@ -71,12 +71,23 @@
                   echo "Kosong";
                 } else {
                   foreach ($data as $key => $value):
+                    $qty = $value['qty'];
                     $id = $value['barcode'];
                   ?>
                     <tr>
                       <td><?= $key+1 ?></td>
                       <td><?= $value['tanggal'] ?></td>
-                      <td><?= $this->db->get_where('produk', array('id' => $id))->row('nama_produk'); ?></td>
+                      <td>
+                        <?php 
+                        $produk = explode(',',$id);
+                        foreach ($produk as $k => $row) {
+                          $this->db->select('nama_produk');
+			                    $this->db->where('id', $row);
+                          echo $this->db->get('produk')->row()->nama_produk;
+                          echo '<br>';
+                        }
+                        ?>
+                      </td>
                       <td><?= $value['total_bayar'] ?></td>
                       <td><?= $value['jumlah_uang'] ?></td>
                       <td><?= $value['diskon'] ?></td>

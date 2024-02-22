@@ -8,8 +8,8 @@
 	<div style="width: 500px; margin: auto;">
 		<br>
 		<center>
-			<?php echo $this->session->userdata('toko')->nama; ?><br>
-			<?php echo $this->session->userdata('toko')->alamat; ?><br><br>
+			<?php echo "<h2 style='margin-bottom:-20px'>".$this->session->userdata('toko')->nama ."</h2>";?><br>
+			<?php echo "<small>".$this->session->userdata('toko')->alamat."</small>"; ?><br><br>
 			<table width="100%">
 				<tr>
 					<td><?php echo $nota ?></td>
