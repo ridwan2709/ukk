@@ -66,7 +66,7 @@
             $('.alert').html('Password Salah')
             $('.alert').removeClass('d-none')
           } else {
-            Swal.fire("Sukses", "Sukses Mengedit Data", "success")
+            Swal.fire("Sukses", "Anda Berhasil Login!", "success")
             setTimeout(function() {
               window.location.reload()
             }, 1000);
