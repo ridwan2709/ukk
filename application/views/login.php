@@ -6,6 +6,8 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login</title>
+  <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.css') ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
   <?php $this->load->view('partials/head'); ?>
 </head>
 <body class="hold-transition login-page">
@@ -64,9 +66,7 @@
             $('.alert').html('Password Salah')
             $('.alert').removeClass('d-none')
           } else {
-            $('.alert').html('Sukses')
-            $('.alert').addClass('alert-success')
-            $('.alert').removeClass('d-none alert-danger')
+            Swal.fire("Sukses", "Sukses Mengedit Data", "success")
             setTimeout(function() {
               window.location.reload()
             }, 1000);
@@ -79,5 +79,6 @@
     }
   })
 </script>
+<script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
 </body>
 </html>

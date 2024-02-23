@@ -101,7 +101,7 @@
             <p>Transaksi</p>
           </a>
         </li>
-        <li class="nav-item has-treeview <?php echo $uri == 'laporan_penjualan' || $uri == 'laporan_stok_masuk' || $uri == 'laporan_stok_keluar' ? 'menu-open' : 'no' ?>">
+        <li class="nav-item has-treeview <?php echo $uri == 'laporan_penjualan' || $uri == 'laporan_stok_masuk' || $uri == 'laporan_stok_keluar' || $uri == 'laporan_bulanan'? 'menu-open' : 'no' ?>">
           <a href="<?php echo site_url('laporan') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan' || $uri == 'laporan_stok_masuk' || $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
             <i class="fas fa-book nav-icon"></i>
             <p>Laporan</p>
